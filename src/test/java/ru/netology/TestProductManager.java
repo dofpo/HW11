@@ -51,5 +51,12 @@ public class TestProductManager {
         Product[] expected = {book1, tel};
         Assertions.assertArrayEquals(expected, actual);
     }
+    @Test
+    public void RemoveById() {
+        manager.removeById(1);
+        Product[] actual = repo.findAll();
+        Product[] expected = {book1, tel, tel1};
+        Assertions.assertArrayEquals(expected, actual);
+    }
 
 }

@@ -7,7 +7,9 @@ public class Product {
     protected String name;
     protected int cost;
 
-
+    public int getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }

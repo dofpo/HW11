@@ -27,4 +27,12 @@ public class TestRepository {
         Product[] expected = {book, tel, book1};
         Assertions.assertArrayEquals(expected, actual);
     }
+    @Test
+    public void removeById() {
+        repo.removeById(1);
+        Product[] actual = repo.findAll();
+        Product[] expected = {tel};
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
 }

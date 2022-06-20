@@ -12,7 +12,9 @@ public class ProductManager {
 
 
     private Product[] products = new Product[0];
-
+    public void removeById(int id) {
+        repository.removeById(id);
+    }
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];         // тут будем хранить подошедшие запросу продукты 0 - кол-во элементов
         for (Product product : repository.findAll()) {   // findAll() получение всех элементов, которые будем перебирать
@@ -26,15 +28,14 @@ public class ProductManager {
         return result;
     }
 
-    // метод определения соответствия товара product запросу search
+
     public boolean matches(Product product, String search) {
         if (product.getName().contains(search)) {
             return true;
         } else {
             return false;
         }
-        // или в одну строку:
-        // return product.getName().contains(search);
+
     }
 }
 
