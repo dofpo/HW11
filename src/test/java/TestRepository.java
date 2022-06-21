@@ -1,8 +1,10 @@
 package ru.netology;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class TestRepository {
@@ -25,14 +27,21 @@ public class TestRepository {
         repo.add(book1);
         Product[] actual = repo.findAll();
         Product[] expected = {book, tel, book1};
-        Assertions.assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, actual);
     }
     @Test
     public void removeById() {
         repo.removeById(1);
         Product[] actual = repo.findAll();
         Product[] expected = {tel};
-        Assertions.assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void removeByIdException() {
+        
+        assertThrows(NotFoundException.class,()->{
+            repo.removeById(5);
+        });
+    }
 }

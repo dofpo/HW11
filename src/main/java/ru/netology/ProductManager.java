@@ -2,6 +2,7 @@ package ru.netology;
 
 public class ProductManager {
     private Repository repository;
+
     public ProductManager(Repository repository) {  // аргументом(экземпляр) будем использовать класс Repository
         this.repository = repository;
     }
@@ -12,9 +13,11 @@ public class ProductManager {
 
 
     private Product[] products = new Product[0];
+
     public void removeById(int id) {
         repository.removeById(id);
     }
+
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];         // тут будем хранить подошедшие запросу продукты 0 - кол-во элементов
         for (Product product : repository.findAll()) {   // findAll() получение всех элементов, которые будем перебирать
